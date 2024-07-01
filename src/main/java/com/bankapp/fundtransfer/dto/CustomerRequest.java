@@ -9,6 +9,7 @@ public record CustomerRequest(String firstName,
 		                  String pincode,
 						  String email,
 						  String mobileNumber,
+						  String password,
 						  String typeOfAccount,
 						  String bankName
              )
