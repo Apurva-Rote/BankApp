@@ -1,18 +1,16 @@
 package com.bankapp.fundtransfer.entity;
 
 import java.math.BigDecimal;
-import java.util.ArrayList;
-import java.util.List;
+import java.time.LocalDateTime;
 
-import jakarta.persistence.CascadeType;
+import org.hibernate.annotations.CreationTimestamp;
+
 import jakarta.persistence.Entity;
-import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
-import jakarta.persistence.OneToMany;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -25,19 +23,21 @@ import lombok.Setter;
 @AllArgsConstructor
 @Builder
 @Entity
-public class AccountDetails {
+public class TransactionHistory {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	private String accountNumber;
-	private BigDecimal accountBalance;
-	private String typeOfAccount;
+	private String transferAccountDetails;
+	private String bankName;
+	private BigDecimal credit;
+	private BigDecimal debit;
+	@CreationTimestamp
+	private LocalDateTime transactionDateTime;
+	private BigDecimal closingBalance;
+	private String transactionStatus;
 	@ManyToOne
-    @JoinColumn(name = "cust_id")
-    private Customer customer;
-	@OneToMany(fetch = FetchType.LAZY,cascade = CascadeType.ALL)
-	private List<TransactionHistory> transactions = new ArrayList<>();
-
-
+	@JoinColumn(name = "account_id")
+	private AccountDetails accountNo;
+	
 }

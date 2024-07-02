@@ -9,4 +9,6 @@ import com.bankapp.fundtransfer.entity.Customer;
 
 public interface AccountDetailsRepository extends JpaRepository<AccountDetails, Long>{
 	List<AccountDetails> findByCustomer(Customer customer);
+	AccountDetails findByAccountNumber(String accountNumber);
+	boolean existsByAccountNumber(String accountNumber);
 }

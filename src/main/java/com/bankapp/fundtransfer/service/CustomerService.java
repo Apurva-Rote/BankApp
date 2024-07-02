@@ -1,6 +1,7 @@
 package com.bankapp.fundtransfer.service;
 
 import com.bankapp.fundtransfer.dto.BankResponse;
+import com.bankapp.fundtransfer.dto.CreditDebitRequest;
 import com.bankapp.fundtransfer.dto.CustomerLoginResponse;
 import com.bankapp.fundtransfer.dto.CustomerRequest;
 
@@ -11,4 +12,8 @@ public interface CustomerService {
 
 	CustomerLoginResponse accountDetails(String mobileNumber);
 	
-}
+	BankResponse creditOrDebit(CreditDebitRequest creditDebitRequest);
+	
+	BankResponse balanceEnquiry(String accountNo);
+	
+} 

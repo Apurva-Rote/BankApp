@@ -10,6 +10,7 @@ import org.hibernate.annotations.UpdateTimestamp;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -40,7 +41,8 @@ public class Customer {
 	private String state;
 	private String email;
 	private String mobileNumber;
-	@OneToMany(cascade = CascadeType.ALL)
+	private String bankName;
+	@OneToMany(fetch = FetchType.LAZY,cascade = CascadeType.ALL)
 	private List<AccountDetails> accountDetails = new ArrayList<>();
 	@CreationTimestamp
 	private LocalDateTime createdAt;

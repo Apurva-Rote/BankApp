@@ -10,8 +10,7 @@ public record CustomerRequest(String firstName,
 						  String email,
 						  String mobileNumber,
 						  String password,
-						  String typeOfAccount,
-						  String bankName
+						  String typeOfAccount
              )
 {
 
